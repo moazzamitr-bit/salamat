@@ -22,7 +22,10 @@ import MessagesPage from '@/features/messages/MessagesPage'
 import CareTeamDashboard from '@/features/care-team/CareTeamDashboard'
 import AdminDashboard from '@/features/admin/AdminDashboard'
 
-export const router = createBrowserRouter([
+const basename = import.meta.env.BASE_URL.replace(/\/$/, '')
+
+export const router = createBrowserRouter(
+  [
   {
     element: <AppShell />,
     children: [
@@ -140,4 +143,6 @@ export const router = createBrowserRouter([
       { path: '*', element: <Navigate to="/" replace /> },
     ],
   },
-])
+  ],
+  { basename: basename || undefined }
+)
