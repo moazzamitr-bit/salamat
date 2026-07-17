@@ -24,6 +24,7 @@ import {
 } from '@/lib/utils'
 import PageHeader from '@/components/PageHeader'
 import EmptyState from '@/components/EmptyState'
+import CentersMap from '@/features/centers/CentersMap'
 import { Badge } from '@/components/ui/badge'
 import { Button } from '@/components/ui/button'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
@@ -41,13 +42,6 @@ import type { CenterCategory, DayOfWeek, HealthCenter } from '@/types'
 
 const USER_LAT = DEFAULT_MAP_CENTER.latitude
 const USER_LNG = DEFAULT_MAP_CENTER.longitude
-
-const MAP_BOUNDS = {
-  north: 35.78,
-  south: 35.68,
-  west: 51.33,
-  east: 51.46,
-}
 
 const DAY_LABELS: Record<DayOfWeek, string> = {
   saturday: 'شنبه',
@@ -111,15 +105,6 @@ function hasAccessibility(center: HealthCenter): boolean {
     center.isEmergency === true ||
     ['hospital', 'clinic', 'emergency', 'maternal', 'rehabilitation'].includes(center.category)
   )
-}
-
-function latLngToPosition(lat: number, lng: number): { top: string; left: string } {
-  const top = ((MAP_BOUNDS.north - lat) / (MAP_BOUNDS.north - MAP_BOUNDS.south)) * 100
-  const left = ((lng - MAP_BOUNDS.west) / (MAP_BOUNDS.east - MAP_BOUNDS.west)) * 100
-  return {
-    top: `${Math.min(95, Math.max(5, top))}%`,
-    left: `${Math.min(95, Math.max(5, left))}%`,
-  }
 }
 
 function formatAddress(center: HealthCenter): string {
@@ -469,47 +454,14 @@ export function CentersPage() {
       )}
 
       <div className="grid gap-6 lg:grid-cols-2">
-        <div className="relative aspect-[4/3] overflow-hidden rounded-2xl border border-border bg-gradient-to-br from-accent/60 via-muted/40 to-secondary/10 shadow-panel lg:aspect-auto lg:min-h-[420px]">
-          <div
-            className="absolute inset-0 opacity-30"
-            style={{
-              backgroundImage: `
-                linear-gradient(to right, hsl(var(--border)) 1px, transparent 1px),
-                linear-gradient(to bottom, hsl(var(--border)) 1px, transparent 1px)
-              `,
-              backgroundSize: '32px 32px',
-            }}
+        <div className="relative isolate aspect-[4/3] overflow-hidden rounded-2xl border border-border shadow-panel lg:aspect-auto lg:min-h-[480px]">
+          <CentersMap
+            centers={filtered}
+            selectedId={selectedId}
+            onSelect={setSelectedId}
+            userLocation={{ latitude: USER_LAT, longitude: USER_LNG }}
           />
-          <div className="absolute inset-x-4 top-4 rounded-xl bg-white/90 px-3 py-2 text-xs text-muted-foreground backdrop-blur-sm">
-            <MapPin className="me-1 inline h-3.5 w-3.5" />
-            موقعیت شما — تهران (نمایش تقریبی)
-          </div>
-          <div
-            className="absolute z-10 h-4 w-4 -translate-x-1/2 -translate-y-1/2 rounded-full border-2 border-white bg-primary shadow-md"
-            style={latLngToPosition(USER_LAT, USER_LNG)}
-            title="موقعیت شما"
-          />
-          {filtered.map((center) => {
-            const pos = latLngToPosition(center.latitude, center.longitude)
-            const isSelected = center.id === selectedId
-            return (
-              <button
-                key={center.id}
-                type="button"
-                title={center.name}
-                onClick={() => setSelectedId(center.id)}
-                className={cn(
-                  'absolute z-10 flex h-8 w-8 -translate-x-1/2 -translate-y-full items-center justify-center rounded-full border-2 border-white shadow-md transition-transform hover:scale-110',
-                  center.isEmergency ? 'bg-destructive text-white' : 'bg-secondary text-white',
-                  isSelected && 'ring-2 ring-primary ring-offset-2 scale-110'
-                )}
-                style={pos}
-              >
-                <MapPin className="h-4 w-4" />
-              </button>
-            )
-          })}
-          <div className="absolute bottom-4 start-4 rounded-xl bg-white/90 px-3 py-1.5 text-xs backdrop-blur-sm">
+          <div className="pointer-events-none absolute bottom-4 start-4 z-[1000] rounded-xl bg-white/90 px-3 py-1.5 text-xs shadow-soft backdrop-blur-sm">
             {toPersianDigits(filtered.length)} مرکز
           </div>
         </div>

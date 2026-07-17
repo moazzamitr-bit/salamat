@@ -123,6 +123,27 @@
   }
 }
 
+/* Leaflet / OpenStreetMap adjustments */
+.leaflet-container {
+  font-family: 'Vazirmatn', Tahoma, sans-serif;
+  z-index: 0;
+}
+
+.leaflet-popup-content-wrapper {
+  border-radius: 0.75rem;
+  box-shadow: 0 8px 24px rgb(15 41 66 / 0.16);
+}
+
+.leaflet-popup-content {
+  margin: 10px 14px;
+  line-height: 1.7;
+}
+
+.leaflet-container .leaflet-control-attribution {
+  font-size: 10px;
+  background: rgb(255 255 255 / 0.85);
+}
+
 @layer utilities {
   .persian-nums {
     font-variant-numeric: tabular-nums;
