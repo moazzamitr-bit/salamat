@@ -1,0 +1,273 @@
+import type { Consent, FamilyMember, Profile } from '@/types';
+
+// ─── Demo User Profiles ───────────────────────────────────────────────────────
+
+export const citizenProfile: Profile = {
+  id: 'p-citizen-1',
+  userId: 'u-citizen-1',
+  role: 'citizen',
+  firstName: 'سارا',
+  lastName: 'محمدی',
+  fullName: 'سارا محمدی',
+  nationalId: '۰۰۱۲۳۴۵۶۷۸',
+  birthDate: '1991-03-15',
+  age: 34,
+  gender: 'female',
+  phone: '۰۹۱۲۱۲۳۴۵۶۷',
+  email: 'sara.mohammadi@demo.selfcare.ir',
+  avatarUrl: '/avatars/sara-mohammadi.jpg',
+  address: {
+    province: 'تهران',
+    city: 'تهران',
+    district: 'منطقه ۳',
+    street: 'خیابان ولیعصر، کوچه گلستان، پلاک ۲۴',
+    postalCode: '۱۹۶۱۷۳۴۵۱۱',
+  },
+  bloodType: 'O+',
+  emergencyContact: {
+    name: 'رضا محمدی',
+    relationship: 'همسر',
+    phone: '۰۹۱۲۹۸۷۶۵۴۳',
+  },
+  preferredLanguage: 'fa',
+  isActive: true,
+  createdAt: '2024-01-10T08:00:00.000Z',
+  updatedAt: '2025-06-20T14:30:00.000Z',
+};
+
+export const careTeamProfile: Profile = {
+  id: 'p-careteam-1',
+  userId: 'u-careteam-1',
+  role: 'care_team',
+  firstName: 'علی',
+  lastName: 'رضایی',
+  fullName: 'دکتر علی رضایی',
+  nationalId: '۰۰۳۴۵۶۷۸۹۰',
+  birthDate: '1980-07-22',
+  age: 45,
+  gender: 'male',
+  phone: '۰۲۱۸۸۷۷۶۶۵۵',
+  email: 'dr.rezaei@demo.selfcare.ir',
+  avatarUrl: '/avatars/dr-rezaei.jpg',
+  address: {
+    province: 'تهران',
+    city: 'تهران',
+    district: 'منطقه ۶',
+    street: 'بیمارستان امام خمینی، ساختمان پزشکان',
+    postalCode: '۱۴۱۶۷۳۳۱۴۷',
+  },
+  preferredLanguage: 'fa',
+  isActive: true,
+  createdAt: '2024-01-05T08:00:00.000Z',
+  updatedAt: '2025-07-01T09:00:00.000Z',
+};
+
+export const adminProfile: Profile = {
+  id: 'p-admin-1',
+  userId: 'u-admin-1',
+  role: 'admin',
+  firstName: 'مدیر',
+  lastName: 'سامانه',
+  fullName: 'مدیر سامانه',
+  nationalId: '۰۰۵۵۶۶۷۷۸۸',
+  birthDate: '1985-11-08',
+  age: 39,
+  gender: 'male',
+  phone: '۰۲۱۴۴۴۴۴۴۴۴',
+  email: 'admin@demo.selfcare.ir',
+  address: {
+    province: 'تهران',
+    city: 'تهران',
+    district: 'منطقه ۱۱',
+    street: 'سازمان فناوری اطلاعات، طبقه ۵',
+    postalCode: '۱۴۴۵۶۱۳۱۵۴',
+  },
+  preferredLanguage: 'fa',
+  isActive: true,
+  createdAt: '2024-01-01T00:00:00.000Z',
+  updatedAt: '2025-07-10T11:00:00.000Z',
+};
+
+// ─── Family Member Profiles ─────────────────────────────────────────────────────
+
+export const spouseProfile: Profile = {
+  id: 'p-spouse-1',
+  userId: 'u-spouse-1',
+  role: 'citizen',
+  firstName: 'رضا',
+  lastName: 'محمدی',
+  fullName: 'رضا محمدی',
+  nationalId: '۰۰۲۳۴۵۶۷۸۹',
+  birthDate: '1989-09-10',
+  age: 35,
+  gender: 'male',
+  phone: '۰۹۱۲۹۸۷۶۵۴۳',
+  email: 'reza.mohammadi@demo.selfcare.ir',
+  address: {
+    province: 'تهران',
+    city: 'تهران',
+    district: 'منطقه ۳',
+    street: 'خیابان ولیعصر، کوچه گلستان، پلاک ۲۴',
+    postalCode: '۱۹۶۱۷۳۴۵۱۱',
+  },
+  bloodType: 'A+',
+  preferredLanguage: 'fa',
+  isActive: true,
+  createdAt: '2024-02-01T08:00:00.000Z',
+  updatedAt: '2025-06-15T10:00:00.000Z',
+};
+
+export const childProfile: Profile = {
+  id: 'p-child-1',
+  userId: 'u-child-1',
+  role: 'citizen',
+  firstName: 'آوا',
+  lastName: 'محمدی',
+  fullName: 'آوا محمدی',
+  nationalId: '۰۰۸۷۶۵۴۳۲۱',
+  birthDate: '2017-05-20',
+  age: 8,
+  gender: 'female',
+  phone: '۰۹۱۲۱۲۳۴۵۶۷',
+  email: 'sara.mohammadi@demo.selfcare.ir',
+  address: {
+    province: 'تهران',
+    city: 'تهران',
+    district: 'منطقه ۳',
+    street: 'خیابان ولیعصر، کوچه گلستان، پلاک ۲۴',
+    postalCode: '۱۹۶۱۷۳۴۵۱۱',
+  },
+  bloodType: 'O+',
+  preferredLanguage: 'fa',
+  isActive: true,
+  createdAt: '2024-02-01T08:00:00.000Z',
+  updatedAt: '2025-06-01T08:00:00.000Z',
+};
+
+export const motherProfile: Profile = {
+  id: 'p-mother-1',
+  userId: 'u-mother-1',
+  role: 'citizen',
+  firstName: 'مریم',
+  lastName: 'احمدی',
+  fullName: 'مریم احمدی',
+  nationalId: '۰۰۱۱۲۲۳۳۴۴',
+  birthDate: '1957-12-03',
+  age: 68,
+  gender: 'female',
+  phone: '۰۲۱۲۲۳۳۴۴۵۵',
+  email: 'maryam.ahmadi@demo.selfcare.ir',
+  address: {
+    province: 'تهران',
+    city: 'تهران',
+    district: 'منطقه ۱',
+    street: 'خیابان انقلاب، کوچه بهار، پلاک ۱۲',
+    postalCode: '۱۳۱۴۷۶۳۵۴۱',
+  },
+  bloodType: 'B+',
+  emergencyContact: {
+    name: 'سارا محمدی',
+    relationship: 'دختر',
+    phone: '۰۹۱۲۱۲۳۴۵۶۷',
+  },
+  preferredLanguage: 'fa',
+  isActive: true,
+  createdAt: '2024-02-01T08:00:00.000Z',
+  updatedAt: '2025-05-20T09:00:00.000Z',
+};
+
+// ─── Family Members ─────────────────────────────────────────────────────────────
+
+export const familyMembers: FamilyMember[] = [
+  {
+    id: 'fm-spouse-1',
+    ownerId: 'p-citizen-1',
+    patientId: 'p-spouse-1',
+    relationship: 'spouse',
+    relationshipLabel: 'همسر',
+    profile: spouseProfile,
+    hasConsent: true,
+    consentId: 'consent-spouse-1',
+    createdAt: '2024-02-01T08:00:00.000Z',
+    updatedAt: '2025-06-15T10:00:00.000Z',
+  },
+  {
+    id: 'fm-child-1',
+    ownerId: 'p-citizen-1',
+    patientId: 'p-child-1',
+    relationship: 'child',
+    relationshipLabel: 'فرزند',
+    profile: childProfile,
+    hasConsent: true,
+    consentId: 'consent-child-1',
+    createdAt: '2024-02-01T08:00:00.000Z',
+    updatedAt: '2025-06-01T08:00:00.000Z',
+  },
+  {
+    id: 'fm-mother-1',
+    ownerId: 'p-citizen-1',
+    patientId: 'p-mother-1',
+    relationship: 'parent',
+    relationshipLabel: 'مادر',
+    profile: motherProfile,
+    hasConsent: true,
+    consentId: 'consent-mother-1',
+    createdAt: '2024-02-01T08:00:00.000Z',
+    updatedAt: '2025-05-20T09:00:00.000Z',
+  },
+];
+
+// ─── Consents ───────────────────────────────────────────────────────────────────
+
+export const consents: Consent[] = [
+  {
+    id: 'consent-spouse-1',
+    ownerId: 'p-citizen-1',
+    granteeId: 'p-spouse-1',
+    granteeName: 'رضا محمدی',
+    patientId: 'p-citizen-1',
+    scope: 'full_record',
+    grantedAt: '2024-02-01T10:00:00.000Z',
+    isActive: true,
+    createdAt: '2024-02-01T10:00:00.000Z',
+    updatedAt: '2024-02-01T10:00:00.000Z',
+  },
+  {
+    id: 'consent-child-1',
+    ownerId: 'p-citizen-1',
+    granteeId: 'p-citizen-1',
+    granteeName: 'سارا محمدی',
+    patientId: 'p-child-1',
+    scope: 'full_record',
+    grantedAt: '2024-02-01T10:00:00.000Z',
+    isActive: true,
+    createdAt: '2024-02-01T10:00:00.000Z',
+    updatedAt: '2024-02-01T10:00:00.000Z',
+  },
+  {
+    id: 'consent-mother-1',
+    ownerId: 'p-citizen-1',
+    granteeId: 'p-citizen-1',
+    granteeName: 'سارا محمدی',
+    patientId: 'p-mother-1',
+    scope: 'medications',
+    grantedAt: '2024-03-15T08:00:00.000Z',
+    expiresAt: '2026-03-15T08:00:00.000Z',
+    isActive: true,
+    createdAt: '2024-03-15T08:00:00.000Z',
+    updatedAt: '2024-03-15T08:00:00.000Z',
+  },
+];
+
+export const allProfiles: Profile[] = [
+  citizenProfile,
+  careTeamProfile,
+  adminProfile,
+  spouseProfile,
+  childProfile,
+  motherProfile,
+];
+
+export const profilesById: Record<string, Profile> = Object.fromEntries(
+  allProfiles.map((p) => [p.id, p]),
+);

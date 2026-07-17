@@ -1,0 +1,89 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 210 40% 98%;
+    --foreground: 215 50% 15%;
+    --card: 0 0% 100%;
+    --card-foreground: 215 50% 15%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 215 50% 15%;
+    --primary: 197 82% 24%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 174 58% 39%;
+    --secondary-foreground: 0 0% 100%;
+    --muted: 210 30% 96%;
+    --muted-foreground: 215 16% 42%;
+    --accent: 197 40% 94%;
+    --accent-foreground: 197 82% 24%;
+    --destructive: 0 65% 48%;
+    --destructive-foreground: 0 0% 100%;
+    --warning: 38 92% 50%;
+    --warning-foreground: 215 50% 12%;
+    --success: 160 60% 36%;
+    --success-foreground: 0 0% 100%;
+    --navy: 215 50% 15%;
+    --navy-foreground: 0 0% 100%;
+    --border: 214 25% 88%;
+    --input: 214 25% 88%;
+    --ring: 197 82% 24%;
+    --radius: 0.75rem;
+  }
+
+  * {
+    @apply border-border;
+  }
+
+  html {
+    @apply scroll-smooth;
+  }
+
+  body {
+    @apply bg-background text-foreground font-sans antialiased;
+    font-feature-settings: "ss01" on, "ss02" on;
+  }
+
+  *:focus-visible {
+    @apply outline-none ring-2 ring-ring ring-offset-2 ring-offset-background;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
+}
+
+@layer components {
+  .page-container {
+    @apply mx-auto w-full max-w-6xl px-4 py-6 sm:px-6 lg:px-8;
+  }
+
+  .section-title {
+    @apply text-xl font-semibold text-navy sm:text-2xl;
+  }
+
+  .section-subtitle {
+    @apply mt-1 text-sm text-muted-foreground;
+  }
+
+  .data-row {
+    @apply flex flex-col gap-1 border-b border-border py-3 sm:flex-row sm:items-center sm:justify-between sm:gap-4;
+  }
+
+  .status-dot {
+    @apply inline-block h-2 w-2 shrink-0 rounded-full;
+  }
+}
+
+@layer utilities {
+  .persian-nums {
+    font-variant-numeric: normal;
+  }
+}
