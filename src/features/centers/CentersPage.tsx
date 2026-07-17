@@ -453,20 +453,55 @@ export function CentersPage() {
         </Card>
       )}
 
-      <div className="grid gap-6 lg:grid-cols-2">
-        <div className="relative isolate aspect-[4/3] overflow-hidden rounded-2xl border border-border shadow-panel lg:aspect-auto lg:min-h-[480px]">
-          <CentersMap
-            centers={filtered}
-            selectedId={selectedId}
-            onSelect={setSelectedId}
-            userLocation={{ latitude: USER_LAT, longitude: USER_LNG }}
-          />
-          <div className="pointer-events-none absolute bottom-4 start-4 z-[1000] rounded-xl bg-white/90 px-3 py-1.5 text-xs shadow-soft backdrop-blur-sm">
-            {toPersianDigits(filtered.length)} مرکز
+      <div className="grid gap-6 lg:grid-cols-[minmax(0,1.15fr)_minmax(22rem,0.85fr)] lg:items-start xl:grid-cols-[minmax(0,1.25fr)_minmax(24rem,0.75fr)]">
+        <section
+          className="overflow-hidden rounded-2xl border border-border/80 bg-card shadow-panel lg:sticky lg:top-24"
+          aria-labelledby="centers-map-title"
+        >
+          <div className="flex min-h-16 items-center justify-between gap-3 border-b border-border/70 px-4 sm:px-5">
+            <div className="flex min-w-0 items-center gap-3">
+              <span className="icon-well h-9 w-9 rounded-lg" aria-hidden>
+                <MapPin className="h-4.5 w-4.5" />
+              </span>
+              <div className="min-w-0">
+                <h2 id="centers-map-title" className="font-semibold text-navy">
+                  نقشه مراکز درمانی
+                </h2>
+                <p className="text-xs text-muted-foreground">برای مشاهده جزئیات، نشانگر را انتخاب کنید</p>
+              </div>
+            </div>
+            <Badge variant="outline" className="shrink-0 bg-background">
+              {toPersianDigits(filtered.length)} مرکز
+            </Badge>
           </div>
-        </div>
 
-        <div className="space-y-3">
+          <div className="relative isolate h-[340px] sm:h-[420px] lg:h-[480px] xl:h-[520px]">
+            <CentersMap
+              centers={filtered}
+              selectedId={selectedId}
+              onSelect={setSelectedId}
+              userLocation={{ latitude: USER_LAT, longitude: USER_LNG }}
+            />
+            <div className="pointer-events-none absolute bottom-4 start-4 z-[1000] flex items-center gap-2 rounded-xl border border-white/70 bg-white/90 px-3 py-2 text-xs text-navy shadow-soft backdrop-blur-sm">
+              <span className="h-2.5 w-2.5 rounded-full bg-primary ring-4 ring-primary/15" aria-hidden />
+              موقعیت شما
+            </div>
+          </div>
+        </section>
+
+        <section aria-labelledby="centers-list-title">
+          <div className="mb-3 flex items-end justify-between gap-3">
+            <div>
+              <h2 id="centers-list-title" className="font-semibold text-navy">
+                مراکز پیشنهادی
+              </h2>
+              <p className="mt-0.5 text-xs text-muted-foreground">مرتب‌شده بر اساس فاصله از شما</p>
+            </div>
+            <span className="shrink-0 text-xs text-muted-foreground">
+              {toPersianDigits(filtered.length)} نتیجه
+            </span>
+          </div>
+          <div className="space-y-3">
           {filtered.length === 0 ? (
             <EmptyState
               title="مرکزی یافت نشد"
@@ -498,7 +533,8 @@ export function CentersPage() {
               />
             ))
           )}
-        </div>
+          </div>
+        </section>
       </div>
 
       {selectedCenter && (

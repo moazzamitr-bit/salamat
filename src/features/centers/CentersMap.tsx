@@ -81,7 +81,7 @@ export function CentersMap({ centers, selectedId, onSelect, userLocation }: Cent
       center={[userLocation.latitude, userLocation.longitude]}
       zoom={12}
       className="h-full w-full"
-      scrollWheelZoom
+      scrollWheelZoom={false}
       attributionControl
     >
       <TileLayer
