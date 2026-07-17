@@ -209,7 +209,7 @@ export default function HealthRecordPage() {
       )}
 
       <Tabs defaultValue="summary" dir="rtl">
-        <TabsList className="h-auto gap-1">
+        <TabsList scrollable className="h-auto gap-1">
           <TabsTrigger value="summary" className={tabTriggerClass}>
             خلاصه سلامت
           </TabsTrigger>

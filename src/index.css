@@ -4,32 +4,36 @@
 
 @layer base {
   :root {
-    --background: 210 40% 98%;
-    --foreground: 215 50% 15%;
+    /* Institutional Calm — درگاه ملی سلامت دیجیتال */
+    --background: 210 28% 97%;
+    --foreground: 215 48% 14%;
     --card: 0 0% 100%;
-    --card-foreground: 215 50% 15%;
+    --card-foreground: 215 48% 14%;
     --popover: 0 0% 100%;
-    --popover-foreground: 215 50% 15%;
-    --primary: 197 82% 24%;
+    --popover-foreground: 215 48% 14%;
+    --primary: 199 72% 28%;
     --primary-foreground: 0 0% 100%;
-    --secondary: 174 58% 39%;
+    --secondary: 174 42% 36%;
     --secondary-foreground: 0 0% 100%;
-    --muted: 210 30% 96%;
-    --muted-foreground: 215 16% 42%;
-    --accent: 197 40% 94%;
-    --accent-foreground: 197 82% 24%;
-    --destructive: 0 65% 48%;
+    --muted: 210 24% 94%;
+    --muted-foreground: 215 14% 40%;
+    --accent: 199 42% 95%;
+    --accent-foreground: 199 72% 24%;
+    --destructive: 0 62% 46%;
     --destructive-foreground: 0 0% 100%;
-    --warning: 38 92% 50%;
-    --warning-foreground: 215 50% 12%;
-    --success: 160 60% 36%;
+    --warning: 38 88% 48%;
+    --warning-foreground: 215 48% 12%;
+    --success: 162 48% 32%;
     --success-foreground: 0 0% 100%;
-    --navy: 215 50% 15%;
+    --navy: 215 48% 14%;
     --navy-foreground: 0 0% 100%;
-    --border: 214 25% 88%;
-    --input: 214 25% 88%;
-    --ring: 197 82% 24%;
-    --radius: 0.75rem;
+    --surface-1: 0 0% 100%;
+    --surface-2: 210 30% 98%;
+    --trust: 199 55% 92%;
+    --border: 214 22% 88%;
+    --input: 214 22% 88%;
+    --ring: 199 72% 28%;
+    --radius: 0.875rem;
   }
 
   * {
@@ -43,6 +47,7 @@
   body {
     @apply bg-background text-foreground font-sans antialiased;
     font-feature-settings: "ss01" on, "ss02" on;
+    line-height: 1.7;
   }
 
   *:focus-visible {
@@ -66,24 +71,64 @@
   }
 
   .section-title {
-    @apply text-xl font-semibold text-navy sm:text-2xl;
+    @apply text-[1.35rem] font-semibold tracking-tight text-navy sm:text-2xl;
   }
 
   .section-subtitle {
-    @apply mt-1 text-sm text-muted-foreground;
+    @apply mt-1.5 text-sm leading-relaxed text-muted-foreground;
+  }
+
+  .text-display {
+    @apply text-2xl font-bold tracking-tight text-navy sm:text-3xl;
+  }
+
+  .text-caption {
+    @apply text-xs leading-relaxed text-muted-foreground;
+  }
+
+  .text-overline {
+    @apply text-xs font-semibold tracking-wide text-secondary;
   }
 
   .data-row {
-    @apply flex flex-col gap-1 border-b border-border py-3 sm:flex-row sm:items-center sm:justify-between sm:gap-4;
+    @apply flex flex-col gap-1 border-b border-border/80 py-3.5 sm:flex-row sm:items-center sm:justify-between sm:gap-4;
   }
 
   .status-dot {
     @apply inline-block h-2 w-2 shrink-0 rounded-full;
   }
+
+  .trust-strip {
+    @apply border-b border-border/70 bg-trust/60 text-navy;
+  }
+
+  .hero-band {
+    @apply relative overflow-hidden rounded-2xl border border-primary/10 bg-gradient-to-bl from-primary/[0.08] via-white to-secondary/[0.06];
+  }
+
+  .service-tile {
+    @apply flex min-h-[5.5rem] flex-col justify-between rounded-2xl border border-border/80 bg-white p-4 text-right shadow-soft transition-all duration-200 hover:border-primary/25 hover:bg-accent/40 hover:shadow-elevated focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring;
+  }
+
+  .icon-well {
+    @apply flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-primary/10 text-primary;
+  }
+
+  .panel-surface {
+    @apply rounded-2xl border border-border/80 bg-white shadow-soft;
+  }
+
+  .nav-active-rail {
+    @apply relative before:absolute before:inset-y-2 before:start-0 before:w-1 before:rounded-full before:bg-primary;
+  }
 }
 
 @layer utilities {
   .persian-nums {
-    font-variant-numeric: normal;
+    font-variant-numeric: tabular-nums;
+  }
+
+  .safe-bottom {
+    padding-bottom: env(safe-area-inset-bottom);
   }
 }

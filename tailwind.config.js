@@ -7,6 +7,10 @@ export default {
       fontFamily: {
         sans: ["Vazirmatn", "Tahoma", "sans-serif"],
       },
+      fontSize: {
+        display: ["2rem", { lineHeight: "1.25", fontWeight: "700" }],
+        "body-lg": ["1.0625rem", { lineHeight: "1.75" }],
+      },
       colors: {
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
@@ -53,24 +57,32 @@ export default {
           DEFAULT: "hsl(var(--navy))",
           foreground: "hsl(var(--navy-foreground))",
         },
+        trust: "hsl(var(--trust))",
+        surface: {
+          1: "hsl(var(--surface-1))",
+          2: "hsl(var(--surface-2))",
+        },
       },
       borderRadius: {
         lg: "var(--radius)",
         md: "calc(var(--radius) - 2px)",
         sm: "calc(var(--radius) - 4px)",
+        "2xl": "1.125rem",
       },
       boxShadow: {
-        soft: "0 1px 3px 0 rgb(15 23 42 / 0.06), 0 1px 2px -1px rgb(15 23 42 / 0.04)",
-        panel: "0 4px 16px -4px rgb(15 23 42 / 0.08)",
+        soft: "0 1px 2px 0 rgb(15 41 66 / 0.04), 0 1px 3px 0 rgb(15 41 66 / 0.06)",
+        elevated: "0 8px 24px -8px rgb(15 41 66 / 0.12), 0 2px 8px -2px rgb(15 41 66 / 0.06)",
+        panel: "0 12px 32px -12px rgb(15 41 66 / 0.16)",
+        inset: "inset 0 1px 2px rgb(15 41 66 / 0.04)",
       },
       keyframes: {
         "fade-in": {
-          from: { opacity: "0", transform: "translateY(4px)" },
+          from: { opacity: "0", transform: "translateY(6px)" },
           to: { opacity: "1", transform: "translateY(0)" },
         },
       },
       animation: {
-        "fade-in": "fade-in 0.25s ease-out",
+        "fade-in": "fade-in 0.28s ease-out",
       },
     },
   },

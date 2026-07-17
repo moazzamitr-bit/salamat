@@ -1,12 +1,11 @@
 import { NavLink } from 'react-router-dom'
-import { Home, FileHeart, Calendar, ClipboardCheck, Bot, MoreHorizontal } from 'lucide-react'
+import { Home, FileHeart, Calendar, Bot, MoreHorizontal } from 'lucide-react'
 import { cn } from '@/lib/utils'
 
 const mobileItems = [
   { to: '/dashboard', label: 'خانه', icon: Home, end: true },
   { to: '/health-record', label: 'پرونده', icon: FileHeart },
   { to: '/appointments', label: 'نوبت', icon: Calendar },
-  { to: '/screenings', label: 'ارزیابی', icon: ClipboardCheck },
   { to: '/assistant', label: 'دستیار', icon: Bot },
   { to: '/profile', label: 'بیشتر', icon: MoreHorizontal },
 ]
@@ -14,10 +13,10 @@ const mobileItems = [
 export function MobileBottomNav() {
   return (
     <nav
-      className="fixed inset-x-0 bottom-0 z-40 border-t border-border bg-white/95 pb-[env(safe-area-inset-bottom)] backdrop-blur lg:hidden"
+      className="fixed inset-x-0 bottom-0 z-40 border-t border-border/80 bg-white/95 pb-[env(safe-area-inset-bottom)] backdrop-blur-md lg:hidden"
       aria-label="ناوبری موبایل"
     >
-      <ul className="grid grid-cols-6">
+      <ul className="grid grid-cols-5 px-1 pt-1">
         {mobileItems.map((item) => {
           const Icon = item.icon
           return (
@@ -27,8 +26,10 @@ export function MobileBottomNav() {
                 end={item.end}
                 className={({ isActive }) =>
                   cn(
-                    'flex flex-col items-center gap-0.5 px-1 py-2 text-[10px] font-medium',
-                    isActive ? 'text-primary' : 'text-muted-foreground'
+                    'flex min-h-[3.25rem] flex-col items-center justify-center gap-1 rounded-xl px-1 py-2 text-xs font-medium transition-colors',
+                    isActive
+                      ? 'bg-accent text-primary'
+                      : 'text-muted-foreground hover:bg-muted/60'
                   )
                 }
               >
